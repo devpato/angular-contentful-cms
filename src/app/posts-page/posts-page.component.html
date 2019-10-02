@@ -1,1 +1,9 @@
-<p>posts-page works!</p>
+<div class="content">
+  <div class="posts">
+    <div *ngFor="let p of contentfulService.posts$ | async as posts" class="post">
+      <div class="post-title">
+        {{ p.sys.id | json }}
+      </div>
+    </div>
+  </div>
+</div>
