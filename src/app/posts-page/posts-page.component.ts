@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ContentfulService } from '../contentful.service';
 
 @Component({
@@ -6,8 +6,7 @@ import { ContentfulService } from '../contentful.service';
   templateUrl: './posts-page.component.html',
   styleUrls: ['./posts-page.component.scss']
 })
-export class PostsPageComponent implements OnInit {
+export class PostsPageComponent {
+  posts$ = this.contentfulService.getPosts();
   constructor(private contentfulService: ContentfulService) {}
-
-  ngOnInit() {}
 }
