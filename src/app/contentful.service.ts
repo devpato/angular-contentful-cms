@@ -19,18 +19,24 @@ export class ContentfulService {
     accessToken: this.CONFIG.accessToken
   });
   constructor() {
-    this.getProducts();
+    this.getPosts();
   }
 
-  posts$: Observable<Entry<any>[]>;
-
-  getProducts(query?: object): void {
-    this.cdaClient
+  getPosts(query?: object): any {
+    return this.cdaClient
       .getEntries({
         ...Object,
         content_type: this.CONFIG.contentTypeIds.angularPosts,
         query
       })
-      .then(res => (this.posts$ = of(res.items)));
+      .then(posts => {
+        return of(posts.items);
+      });
+  }
+
+  getPost(id: string): any {
+    return this.cdaClient.getEntry(id).then(post => {
+      return of(post);
+    });
   }
 }
