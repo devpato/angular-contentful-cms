@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { createClient, Entry } from 'contentful';
-import { Observable, of } from 'rxjs';
+import { createClient } from 'contentful';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContentfulService {
-  CONFIG = {
-    space: '8vmrqe48tnfb',
-    accessToken: 'KL4NJzj-pXlytDxsvNhNLSsJZIfJr4rV08R63fRHhC4',
+  private CONFIG = {
+    space: 'XXXX',
+    accessToken: 'XXXX',
     contentTypeIds: {
-      angularPosts: 'angularPost'
+      angularPost: 'angularPost'
     }
   };
 
@@ -26,7 +26,7 @@ export class ContentfulService {
     return this.cdaClient
       .getEntries({
         ...Object,
-        content_type: this.CONFIG.contentTypeIds.angularPosts,
+        content_type: this.CONFIG.contentTypeIds.angularPost,
         query
       })
       .then(posts => {
