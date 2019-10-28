@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createClient } from 'contentful';
-import { of } from 'rxjs';
+import { from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,20 +24,16 @@ export class ContentfulService {
   }
 
   getPosts(query?: object): any {
-    return this.cdaClient
-      .getEntries({
+    return from(
+      this.cdaClient.getEntries({
         ...Object,
         content_type: this.CONFIG.contentTypeIds.angularPost,
         query
       })
-      .then(posts => {
-        return of(posts.items);
-      });
+    ).pipe(map(posts => posts.items));
   }
 
   getPost(id: string): any {
-    return this.cdaClient.getEntry(id).then(post => {
-      return of(post);
-    });
+    return from(this.cdaClient.getEntry(id));
   }
 }
