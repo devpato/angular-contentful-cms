@@ -2,15 +2,15 @@
   <div class="post">
     <div class="post-header">
       <div class="header--image">
-        <img src="  {{ post.value.fields.image.fields.file.url }}" />
+        <img src="{{ post.fields.image.fields.file.url }}" />
       </div>
       <div class="header--title">
-        {{ post.value.fields.title }}
+        {{ post.fields.title }}
       </div>
     </div>
 
     <div class="post-body">
-      {{ post.value.fields.body }}
+      {{ post.fields.body }}
     </div>
   </div>
 </div>

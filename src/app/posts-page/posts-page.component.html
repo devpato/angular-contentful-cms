@@ -1,7 +1,7 @@
 <div class="content">
   <div class="posts">
     <ng-container *ngIf="posts$ | async as posts">
-      <div *ngFor="let p of posts.value" class="post">
+      <div *ngFor="let p of posts" class="post">
         <div class="post-image">
           <img src="{{ p.fields.image.fields.file.url }}" />
         </div>
